@@ -4,15 +4,37 @@ module.exports = function(config) {
         frameworks: ["mocha", "karma-typescript"],
 
         files: [
-            { pattern: "node_modules/expect.js/index.js" },
-            { pattern: "src/**/*.ts" }
+            { pattern: "src/**/*.ts" },
+            { pattern: "tests/**/*.ts" }
         ],
 
         preprocessors: {
             "**/*.ts": ["karma-typescript"]
         },
 
-        reporters: ["dots", "karma-typescript"],
+		karmaTypescriptConfig: {
+			"compilerOptions": {
+				"target": "es2015",
+				"module": "commonjs",
+				"esModuleInterop": true,
+				"noImplicitAny": true,
+				"outDir": "tmp",
+				"sourceMap": true,
+				"types" : [
+					"mocha",
+					"chai",
+					"node"
+				],
+				"baseUrl": ".",
+				"paths": {
+					"@/*": [
+						"./src/*"
+					]
+				},
+			}
+		},
+
+        reporters: ["spec", "karma-typescript"],
 
         browsers: ["ChromeHeadless"],
 

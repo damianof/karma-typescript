@@ -8,8 +8,15 @@
         "sourceMap": true,
         "types" : [
             "mocha",
-            "expect.js"
-        ]
+			"chai",
+			"node"
+		],
+		"baseUrl": ".",
+		"paths": {
+			"@/*": [
+				"./src/*"
+			]
+		},
     },
     "exclude": [
         "node_modules"
